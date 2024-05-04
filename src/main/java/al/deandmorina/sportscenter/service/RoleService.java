@@ -6,7 +6,9 @@ import al.deandmorina.sportscenter.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class RoleService {
@@ -25,5 +27,17 @@ public class RoleService {
         Role role = new Role();
         role.setName(roleSaveDTO.getName());
         return roleRepository.save(role);
+    }
+
+    public Role updateRole(UUID id, RoleSaveDTO roleSaveDTO) {
+        Role role = roleRepository.findRoleById(id);
+        role.setName(roleSaveDTO.getName());
+        return roleRepository.save(role);
+    }
+
+    public void deleteRole(UUID id) {
+        Role role = roleRepository.findRoleById(id);
+        role.setDeletedAt(new Date());
+        roleRepository.save(role);
     }
 }

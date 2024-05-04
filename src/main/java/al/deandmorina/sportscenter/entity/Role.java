@@ -3,6 +3,7 @@ package al.deandmorina.sportscenter.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SoftDelete;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
@@ -29,5 +30,6 @@ public class Role {
     @Column(name = "name", nullable = false, unique = true)
     private String name;
 
-
+    @Column(name = "deleted_at")
+    private Date deletedAt;
 }
