@@ -6,7 +6,6 @@ import al.deandmorina.sportscenter.service.RoleService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/roles")
@@ -28,12 +27,12 @@ public class RoleController {
     }
 
     @PatchMapping("/update/{id}")
-    public Role updateRole(@PathVariable UUID id, @RequestBody RoleSaveDTO roleSaveDTO) {
+    public Role updateRole(@PathVariable long id, @RequestBody RoleSaveDTO roleSaveDTO) {
         return roleService.updateRole(id, roleSaveDTO);
     }
 
     @PatchMapping("/delete/{id}")
-    public void deleteRole(@PathVariable UUID id) {
+    public void deleteRole(@PathVariable long id) {
         roleService.deleteRole(id);
     }
 }

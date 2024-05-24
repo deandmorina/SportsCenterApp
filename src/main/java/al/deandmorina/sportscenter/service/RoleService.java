@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class RoleService {
@@ -29,13 +28,13 @@ public class RoleService {
         return roleRepository.save(role);
     }
 
-    public Role updateRole(UUID id, RoleSaveDTO roleSaveDTO) {
+    public Role updateRole(long id, RoleSaveDTO roleSaveDTO) {
         Role role = roleRepository.findRoleById(id);
         role.setName(roleSaveDTO.getName());
         return roleRepository.save(role);
     }
 
-    public void deleteRole(UUID id) {
+    public void deleteRole(long id) {
         Role role = roleRepository.findRoleById(id);
         role.setDeletedAt(new Date());
         roleRepository.save(role);

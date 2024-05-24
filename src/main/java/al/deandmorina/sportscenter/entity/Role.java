@@ -1,23 +1,20 @@
 package al.deandmorina.sportscenter.entity;
 
-import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.SoftDelete;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
-import java.util.UUID;
 
 @Table
 @Entity
 @Data
 public class Role {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
-    private UUID id;
+    private Long id;
 
     @Column(name = "created_at")
     @CreationTimestamp
