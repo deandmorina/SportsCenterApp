@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -36,7 +37,8 @@ public class UserController {
         return this.userService.updateUser(userUpdateDTO, id);
     }
 
-    public void updatePassword(@Valid @RequestBody PasswordUpdateDTO passwordUpdateDTO) {
-
+    @PatchMapping("/update-password")
+    public void updatePassword(@Valid @RequestBody PasswordUpdateDTO passwordUpdateDTO, Principal principal) throws Exception {
+        this.userService.updatePassword(passwordUpdateDTO,principal);
     }
 }

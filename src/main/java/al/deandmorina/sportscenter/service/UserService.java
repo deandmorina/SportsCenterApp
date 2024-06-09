@@ -4,6 +4,7 @@ import al.deandmorina.sportscenter.entity.Role;
 import al.deandmorina.sportscenter.entity.User;
 import al.deandmorina.sportscenter.payload.responseDTO.UserResponseDTO;
 import al.deandmorina.sportscenter.payload.saveDTO.UserSaveDTO;
+import al.deandmorina.sportscenter.payload.updateDTO.PasswordUpdateDTO;
 import al.deandmorina.sportscenter.payload.updateDTO.UserUpdateDTO;
 import al.deandmorina.sportscenter.repository.RoleRepository;
 import al.deandmorina.sportscenter.repository.UserRepository;
@@ -13,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -53,5 +55,17 @@ public class UserService {
         user.setLastName(userUpdateDTO.getLastName());
         User savedUser = userRepository.save(user);
         return modelMapper.map(savedUser, UserResponseDTO.class);
+    }
+
+    public void updatePassword(PasswordUpdateDTO passwordUpdateDTO, Principal principal) throws Exception {
+        String email = principal.getName();
+        User user = this.userRepository.findByEmail(email);
+        if (!passwordEncoder.matches(passwordUpdateDTO.getOldPassword(), user.getPassword())) {
+            throw new Exception("Old password incorrect!", null);
+        }
+        if (!passwordUpdateDTO.getNewPassword().equals(passwordUpdateDTO.getConfirmPassword())) {
+            throw new Exception("New password and confirm password don't match!", null);
+        }
+        user.setPassword(passwordEncoder.encode(passwordUpdateDTO.getNewPassword()));
     }
 }
