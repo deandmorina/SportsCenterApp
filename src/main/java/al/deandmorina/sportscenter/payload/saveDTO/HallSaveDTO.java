@@ -11,6 +11,9 @@ public class HallSaveDTO {
     @NotEmpty
     @NotNull
     private String name;
+    @NotEmpty
+    @NotNull
+    private String hallType;
     @Min(0)
     private int normalSeats;
     @Min(0)

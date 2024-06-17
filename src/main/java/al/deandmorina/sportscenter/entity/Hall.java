@@ -27,6 +27,10 @@ public class Hall {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "hall_type", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private HallType hallType;
+
     @Column(name = "normal_seats", nullable = false)
     private int normalSeats;
 
