@@ -26,6 +26,8 @@ public class EventService {
     public EventResponseDTO createEvent(EventSaveDTO eventSaveDTO) {
         Event event = this.modelMapper.map(eventSaveDTO, Event.class);
         Hall hall = this.hallRepository.findById(eventSaveDTO.getHallId()).orElseThrow(() -> new RuntimeException("Hall not found"));
-        return null;
+        event.setHall(hall);
+        Event savedEvent = this.eventRepository.save(event);
+        return this.modelMapper.map(savedEvent, EventResponseDTO.class);
     }
 }
