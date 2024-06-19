@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/evnet")
+@RequestMapping("/events")
 public class EventController {
     private final EventService eventService;
 
