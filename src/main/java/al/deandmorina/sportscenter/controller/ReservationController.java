@@ -23,7 +23,7 @@ public class ReservationController {
     }
 
     @PostMapping("/make")
-    public ReservationResponseDTO makeReservation(@Valid @RequestBody ReservationSaveDTO reservationSaveDTO, Principal principal) {
-        return this.reservationService.makeReservation(reservationSaveDTO,principal);
+    public ReservationResponseDTO makeReservation(@Valid @RequestBody ReservationSaveDTO reservationSaveDTO, Principal principal) throws Exception {
+        return this.reservationService.makeReservation(reservationSaveDTO, principal);
     }
 }
