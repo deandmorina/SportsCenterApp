@@ -1,6 +1,6 @@
 package al.deandmorina.sportscenter.payload.responseDTO;
 
-import al.deandmorina.sportscenter.entity.HallType;
+import al.deandmorina.sportscenter.enums.HallType;
 import lombok.Data;
 
 @Data

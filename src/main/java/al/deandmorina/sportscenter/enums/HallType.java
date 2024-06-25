@@ -1,4 +1,4 @@
-package al.deandmorina.sportscenter.entity;
+package al.deandmorina.sportscenter.enums;
 
 public enum HallType {
     FOOTBALL("FOOTBALL"),

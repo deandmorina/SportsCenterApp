@@ -1,7 +1,6 @@
 package al.deandmorina.sportscenter.service;
 
 import al.deandmorina.sportscenter.entity.Hall;
-import al.deandmorina.sportscenter.entity.HallType;
 import al.deandmorina.sportscenter.entity.User;
 import al.deandmorina.sportscenter.payload.responseDTO.HallResponseDTO;
 import al.deandmorina.sportscenter.payload.saveDTO.HallSaveDTO;

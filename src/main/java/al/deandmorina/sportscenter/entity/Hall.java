@@ -1,5 +1,6 @@
 package al.deandmorina.sportscenter.entity;
 
+import al.deandmorina.sportscenter.enums.HallType;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
