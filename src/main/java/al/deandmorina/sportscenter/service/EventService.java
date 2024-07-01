@@ -7,6 +7,8 @@ import al.deandmorina.sportscenter.payload.responseDTO.PaginatedResponseDTO;
 import al.deandmorina.sportscenter.payload.saveDTO.EventSaveDTO;
 import al.deandmorina.sportscenter.repository.EventRepository;
 import al.deandmorina.sportscenter.repository.HallRepository;
+import al.deandmorina.sportscenter.search.SearchCriteria;
+import al.deandmorina.sportscenter.search.Specification;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -53,5 +55,24 @@ public class EventService {
         response.setTotalPages(eventPage.getTotalPages());
         response.setLast(eventPage.isLast());
         return response;
+    }
+
+    public List<EventResponseDTO> searchBy(String searchText) {
+        Specification<Event> specifyByNormalSeatPrice = new Specification<>(new SearchCriteria("normalSeatPrice", ":", searchText));
+        Specification<Event> specifyByVipPrice = new Specification<>(new SearchCriteria("VIPSeatPrice", ":", searchText));
+        Specification<Event> specifyUltraPrice = new Specification<>(new SearchCriteria("ultraSeatPrice", ":", searchText));
+        Specification<Event> specifyStartTime = new Specification<>(new SearchCriteria("startTime", ":", searchText));
+        Specification<Event> specifyEndTime = new Specification<>(new SearchCriteria("endTime", ":", searchText));
+        Specification<Event> specifyFirstTeam = new Specification<>(new SearchCriteria("firstTeam",":",searchText));
+        Specification<Event> specifySecondTeam = new Specification<>(new SearchCriteria("secondTeam",":",searchText));
+
+        List<Event> events = this.eventRepository.findAll(org.springframework.data.jpa.domain.Specification.where(specifyByNormalSeatPrice)
+                .or(specifyByVipPrice)
+                .or(specifyUltraPrice)
+                .or(specifyStartTime)
+                .or(specifyEndTime)
+                .or(specifyFirstTeam)
+                .or(specifySecondTeam));
+        return events.stream().map(event -> modelMapper.map(event, EventResponseDTO.class)).collect(Collectors.toList());
     }
 }

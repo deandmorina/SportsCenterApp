@@ -37,7 +37,7 @@ public class Event {
     private double VIPSeatPrice;
 
     @Column(name = "ultra_seat_price", nullable = false)
-    private double UltraSeatPrice;
+    private double ultraSeatPrice;
 
     @Column(name = "start_time", nullable = false)
     private Date startTime;

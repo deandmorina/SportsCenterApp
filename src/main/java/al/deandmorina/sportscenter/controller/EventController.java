@@ -7,6 +7,7 @@ import al.deandmorina.sportscenter.service.EventService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/events")
@@ -27,6 +28,11 @@ public class EventController {
                                                             @RequestParam(value = "pageSize", defaultValue = "10", required = false) int pageSize,
                                                             @RequestParam(value = "sortBy", defaultValue = "createdAt", required = false) String sortBy,
                                                             @RequestParam(value = "sortOrder", defaultValue = "asc", required = false) String sortOrder) {
-        return this.eventService.getEvents(pageNumber,pageSize,sortBy,sortOrder);
+        return this.eventService.getEvents(pageNumber, pageSize, sortBy, sortOrder);
+    }
+
+    @GetMapping("/search")
+    public List<EventResponseDTO> searchBy(@RequestParam(value = "searchText", required = false) String searchText) {
+        return this.eventService.searchBy(searchText);
     }
 }
