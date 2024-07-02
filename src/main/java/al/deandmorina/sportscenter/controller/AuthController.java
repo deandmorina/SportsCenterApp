@@ -3,10 +3,7 @@ package al.deandmorina.sportscenter.controller;
 import al.deandmorina.sportscenter.payload.responseDTO.JWTAuthResponseDTO;
 import al.deandmorina.sportscenter.payload.saveDTO.LoginDTO;
 import al.deandmorina.sportscenter.service.AuthService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
@@ -20,5 +17,10 @@ public class AuthController {
     @PostMapping("/login")
     private JWTAuthResponseDTO login(@RequestBody LoginDTO loginDTO) {
         return this.authService.login(loginDTO);
+    }
+
+    @GetMapping("/refreshToken")
+    public JWTAuthResponseDTO refreshToken(){
+        return this.authService.refreshToken();
     }
 }
