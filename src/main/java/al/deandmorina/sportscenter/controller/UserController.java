@@ -39,6 +39,6 @@ public class UserController {
 
     @PatchMapping("/update-password")
     public void updatePassword(@Valid @RequestBody PasswordUpdateDTO passwordUpdateDTO, Principal principal) throws Exception {
-        this.userService.updatePassword(passwordUpdateDTO,principal);
+        this.userService.updatePassword(passwordUpdateDTO, principal);
     }
 }

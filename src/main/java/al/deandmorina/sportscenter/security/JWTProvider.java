@@ -41,8 +41,7 @@ public class JWTProvider {
         try {
             Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
             return true;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new JwtException("Invalid JWT token");
         }
     }

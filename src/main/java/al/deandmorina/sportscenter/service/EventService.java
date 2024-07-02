@@ -63,8 +63,8 @@ public class EventService {
         Specification<Event> specifyUltraPrice = new Specification<>(new SearchCriteria("ultraSeatPrice", ":", searchText));
         Specification<Event> specifyStartTime = new Specification<>(new SearchCriteria("startTime", ":", searchText));
         Specification<Event> specifyEndTime = new Specification<>(new SearchCriteria("endTime", ":", searchText));
-        Specification<Event> specifyFirstTeam = new Specification<>(new SearchCriteria("firstTeam",":",searchText));
-        Specification<Event> specifySecondTeam = new Specification<>(new SearchCriteria("secondTeam",":",searchText));
+        Specification<Event> specifyFirstTeam = new Specification<>(new SearchCriteria("firstTeam", ":", searchText));
+        Specification<Event> specifySecondTeam = new Specification<>(new SearchCriteria("secondTeam", ":", searchText));
 
         List<Event> events = this.eventRepository.findAll(org.springframework.data.jpa.domain.Specification.where(specifyByNormalSeatPrice)
                 .or(specifyByVipPrice)

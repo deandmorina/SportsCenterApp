@@ -20,7 +20,7 @@ public class AuthController {
     }
 
     @GetMapping("/refreshToken")
-    public JWTAuthResponseDTO refreshToken(){
+    public JWTAuthResponseDTO refreshToken() {
         return this.authService.refreshToken();
     }
 }

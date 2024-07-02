@@ -5,9 +5,9 @@ public enum HallType {
     VOLLEYBALL("VOLLEYBALL"),
     TENNIS("TENNIS");
 
-    private String name;
+    private final String name;
 
-    private HallType(String name) {
+    HallType(String name) {
         this.name = name;
     }
 
